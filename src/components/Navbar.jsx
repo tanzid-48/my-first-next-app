@@ -1,47 +1,87 @@
+'use client'
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
 const Navbar = () => {
 
-    const Links = <>
-    <li><Link href='/about'>About</Link></li>
-    <li><Link href='/contact'>Contact</Link></li>
-    <li><Link href='/about/designers'>Designers</Link></li>
-    <li><Link href='/about/developers'>Developers</Link></li>
-    <li><Link href='/blogs'>Blogs</Link></li>
-    <li><Link href='/dashboard'>Dashboard</Link></li>
-    <li><Link href= "/users">Users</Link></li>
-    <li><Link href= "/posts">Posts</Link></li>
-   
-    </>
-    return (
+  const pathname = usePathname();
 
-        <div className="navbar bg-base-100 shadow-sm">
-  <div className="navbar-start">
-    <div className="dropdown">
-      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+  const Links = <>
+    <li><Link className={pathname === '/' ? 'bg-blue-400' : ''} href="/">
+      Home
+    </Link></li>
+    <li>
+      <Link className={pathname === '/about' ? 'bg-blue-400' : ''} href="/about">
+        About
+      </Link>
+    </li>
+
+    <li>
+      <Link className={pathname === '/contact' ? 'bg-blue-400' : ''} href="/contact">
+        Contact
+      </Link>
+    </li>
+    <li>
+      <Link className={pathname === '/about/designers' ? 'bg-blue-400' : ''} href="/about/designers">
+        Designers
+      </Link>
+    </li>
+    <li>
+      <Link className={pathname === '/about/developers' ? 'bg-blue-400' : ''} href="/about/developers">
+        Developers
+      </Link>
+    </li>
+    <li>
+      <Link className={pathname === '/blogs' ? 'bg-blue-400' : ''} href="/blogs">
+        Blogs
+      </Link>
+    </li>
+    <li>
+      <Link className={pathname === '/dashboard' ? 'bg-blue-400' : ''} href="/dashboard">
+        Dashboard
+      </Link>
+    </li>
+    <li>
+      <Link className={pathname === '/users' ? 'bg-blue-400' : ''} href="/users">
+        Users
+      </Link>
+    </li>
+    <li>
+      <Link className={pathname === '/posts' ? 'bg-blue-400' : ''} href="/posts">
+        Posts
+      </Link>
+    </li>
+
+  </>
+  return (
+
+    <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+          </div>
+          <ul
+            tabIndex="-1"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+            {Links}
+
+          </ul>
+        </div>
+        <Link href="/" className="btn btn-ghost text-xl">Home</Link>
       </div>
-      <ul
-        tabIndex="-1"
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        {Links}
-
-      </ul>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+          {Links}
+        </ul>
+      </div>
+      <div className="navbar-end">
+        <a className="btn">Button</a>
+      </div>
     </div>
-    <Link href="/" className="btn btn-ghost text-xl">Home</Link>
-  </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-      {Links}
-    </ul>
-  </div>
-  <div className="navbar-end">
-    <a className="btn">Button</a>
-  </div>
-</div>
-       
-    );
+
+  );
 };
 
 export default Navbar;
