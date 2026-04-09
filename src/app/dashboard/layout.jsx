@@ -8,9 +8,9 @@ const DashboardLayout = ({ children }) => {
   <div className="drawer-content flex flex-col items-center justify-center">
     {/* Page content here */}
     <main>{ children }</main>
-    <label htmlFor="my-drawer-3" className="btn drawer-button lg:hidden">
-      Open drawer
-    </label>
+    {/* <label htmlFor="my-drawer-3" className="btn drawer-button lg:hidden">
+  
+    </label> */}
   </div>
   <div className="drawer-side">
     <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
