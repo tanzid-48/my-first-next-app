@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react';
 
 const blogs = [
@@ -52,24 +51,25 @@ const blogs = [
   },
 ];
 
+const BlogDetailsPage = async({ params }) => {
+    const {blogid} = await params;
 
-const BlogsPage = () => {
+    const blog = blogs.find(blog => blog.id ===  parseInt(blogid));
+    console.log(blog,"id");
+
     return (
-        <div className="">
-            <h2 className='text-3xl font-bold mb-4'>Blogs</h2>
+        <div>
+            <h3 className='text-3xl'> Blog Details Coming soon</h3>
 
             {
-                blogs.map(blog => <div key={blog.id}>
-            <h2 className='text-3xl font-bold mb-4'>{blog.title}</h2>
-             <p className='text-sm mb-2'>{blog.author}</p>
-          
-          <Link href={`/blogs/${blog.id}`}>Show Details</Link>
-
-                </div>)
+                blog && <div className="">
+                  <h2 className='text-4xl font-bold mb-2'>{blog.title}</h2>  
+                  <p>{blog.content}</p>
+                  <h4> author :{blog.author}</h4>
+                </div>
             }
-
         </div>
     );
 };
 
-export default BlogsPage;
+export default BlogDetailsPage;
